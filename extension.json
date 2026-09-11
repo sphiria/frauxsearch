@@ -1,0 +1,116 @@
+{
+    "name": "FrauxSearch",
+    "version": "0.1.0",
+    "author": [
+        "[https://lis.sh lis]"
+    ],
+    "url": "https://github.com/sphiria/frauxsearch",
+    "descriptionmsg": "frauxsearch-desc",
+    "license-name": "MIT",
+    "type": "other",
+    "requires": {
+        "MediaWiki": ">= 1.46"
+    },
+    "AutoloadNamespaces": {
+        "FrauxSearch\\": "src/"
+    },
+    "SearchMappings": {
+        "FrauxSearch": {
+            "class": "FrauxSearch\\FrauxSearchEngine"
+        }
+    },
+    "MessagesDirs": {
+        "FrauxSearch": [
+            "i18n"
+        ]
+    },
+    "JobClasses": {
+        "frauxSearchRefreshPage": {
+            "class": "FrauxSearch\\RefreshPageJob",
+            "services": [],
+            "needsPage": false
+        },
+        "frauxSearchScheduleBoostRefreshes": {
+            "class": "FrauxSearch\\ScheduleBoostRefreshesJob",
+            "services": [],
+            "needsPage": false
+        },
+        "frauxSearchScheduleIncomingRefreshes": {
+            "class": "FrauxSearch\\ScheduleIncomingRefreshesJob",
+            "services": [],
+            "needsPage": false
+        }
+    },
+    "HookHandlers": {
+        "FrauxSearch\\SoftwareInfoHooks": {
+            "class": "FrauxSearch\\SoftwareInfoHooks"
+        },
+        "FrauxSearch\\Hooks": {
+            "class": "FrauxSearch\\Hooks"
+        },
+        "FrauxSearch\\BoostPolicyHooks": {
+            "class": "FrauxSearch\\BoostPolicyHooks"
+        },
+        "FrauxSearch\\TargetIdentityHooks": {
+            "class": "FrauxSearch\\TargetIdentityHooks"
+        }
+    },
+    "Hooks": {
+        "SoftwareInfo": "FrauxSearch\\SoftwareInfoHooks",
+        "LinksUpdateComplete": "FrauxSearch\\Hooks",
+        "MultiContentSave": "FrauxSearch\\Hooks",
+        "PageDeleteComplete": [
+            "FrauxSearch\\Hooks",
+            "FrauxSearch\\BoostPolicyHooks",
+            "FrauxSearch\\TargetIdentityHooks"
+        ],
+        "PageSaveComplete": [
+            "FrauxSearch\\BoostPolicyHooks",
+            "FrauxSearch\\TargetIdentityHooks"
+        ],
+        "PageMoveComplete": [
+            "FrauxSearch\\BoostPolicyHooks",
+            "FrauxSearch\\TargetIdentityHooks"
+        ],
+        "PageUndeleteComplete": [
+            "FrauxSearch\\BoostPolicyHooks",
+            "FrauxSearch\\TargetIdentityHooks"
+        ],
+        "AfterImportPage": [
+            "FrauxSearch\\BoostPolicyHooks",
+            "FrauxSearch\\TargetIdentityHooks"
+        ]
+    },
+    "config": {
+        "FrauxSearchUrl": {
+            "value": "http://127.0.0.1:7700"
+        },
+        "FrauxSearchApiKey": {
+            "value": ""
+        },
+        "FrauxSearchTaskApiKey": {
+            "value": ""
+        },
+        "FrauxSearchIndex": {
+            "value": "mediawiki"
+        },
+        "FrauxSearchTimeout": {
+            "value": 5
+        },
+        "FrauxSearchCoordinationCacheType": {
+            "value": null,
+            "description": "Redis ObjectCaches entry for temporary indexing coordination; null uses MainCacheType."
+        },
+        "FrauxSearchCoordinationRedis": {
+            "value": null,
+            "description": "Optional explicit Redis connection for temporary indexing coordination; null reuses the configured MediaWiki Redis object cache."
+        },
+        "FrauxSearchRefreshBatchSize": {
+            "value": 25
+        },
+        "FrauxSearchRefreshWorkers": {
+            "value": 1
+        }
+    },
+    "manifest_version": 2
+}

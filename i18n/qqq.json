@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": []
+    },
+    "frauxsearch-desc": "{{desc|name=FrauxSearch}}",
+    "frauxsearch-query-invalid-encoding": "Error shown when a full-text search query is not valid UTF-8.",
+    "frauxsearch-query-escaped-quote": "Error for a backslash followed by a double quotation mark in a full-text query. The backend cannot escape quotation marks inside a quoted phrase.",
+    "frauxsearch-query-unclosed-quote": "Error for an unmatched double quotation mark in a full-text query.",
+    "frauxsearch-query-empty-clause": "Error for a missing term after a unary sign, repeated unary signs, or an empty quoted phrase. Keep the literal + and - syntax characters.",
+    "frauxsearch-query-unsupported-operator": "Error for an unsupported search operator. $1 is the literal operator, such as intitle:, OR, *, or ~. Keep -word as an example of excluding a term."
+}

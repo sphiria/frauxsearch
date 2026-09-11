@@ -1,0 +1,66 @@
+name: PHP checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: php-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.3', '8.4', '8.5']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl, dom, mbstring, pdo_sqlite, redis, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: composer check-platform-reqs
+      - name: Install isolated Redis protocol test server
+        run: sudo apt-get update && sudo apt-get install --yes redis-server
+      - run: composer check
+
+  mediawiki:
+    name: MediaWiki 1.46 API and manifest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
+        with:
+          php-version: '8.3'
+          extensions: curl, dom, mbstring, redis, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Fetch checksum-pinned MediaWiki source and bundled dependencies
+        shell: bash
+        run: |
+          MW_INSTALL_PATH="$RUNNER_TEMP/frauxsearch-mediawiki-1.46.0"
+          echo "MW_INSTALL_PATH=$MW_INSTALL_PATH" >> "$GITHUB_ENV"
+          archive="$RUNNER_TEMP/frauxsearch-mediawiki-1.46.0.tar.gz"
+          curl --fail --location --retry 3 --output "$archive" \
+            https://releases.wikimedia.org/mediawiki/1.46/mediawiki-1.46.0.tar.gz
+          echo "ac395e4ffd3b63b86a242efd679257503e463445ba9f989b514d9d3b342c456a  $archive" | sha256sum --check --strict
+          mkdir -p "$MW_INSTALL_PATH"
+          tar --extract --gzip --strip-components=1 --file "$archive" --directory "$MW_INSTALL_PATH"
+      - run: composer check:mediawiki

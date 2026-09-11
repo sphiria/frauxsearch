@@ -1,0 +1,9 @@
+/.phpunit.cache/
+/vendor/
+/.local-notes/
+/ops/
+/tests/integration/redisQueue.php
+/tests/integration/redisQueueConf.php
+/tests/integration/RedisQueueProbeJob.php
+__pycache__/
+*.py[cod]

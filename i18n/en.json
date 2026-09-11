@@ -1,0 +1,13 @@
+{
+    "@metadata": {
+        "authors": [
+            "lis"
+        ]
+    },
+    "frauxsearch-desc": "Uses Meilisearch as MediaWiki's search backend",
+    "frauxsearch-query-invalid-encoding": "The search query contains invalid text encoding. Please enter the query again.",
+    "frauxsearch-query-escaped-quote": "Backslash-escaped quotation marks are not supported. Use paired double quotation marks around a phrase.",
+    "frauxsearch-query-unclosed-quote": "A quoted search phrase is missing its closing quotation mark.",
+    "frauxsearch-query-empty-clause": "Enter a word or phrase directly after + or -, and do not use empty quoted phrases or repeated signs.",
+    "frauxsearch-query-unsupported-operator": "The search operator \"$1\" is not supported by FrauxSearch. Use search words, quoted phrases, -word exclusions, or namespace selection."
+}

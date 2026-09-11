@@ -1,0 +1,60 @@
+{
+    "name": "sphiria/frauxsearch",
+    "description": "Meilisearch-powered search backend for MediaWiki",
+    "type": "mediawiki-extension",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FrauxSearch\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FrauxSearch\\Tests\\": "tests/unit/"
+        }
+    },
+    "require": {
+        "php": ">=8.3",
+        "ext-curl": "*",
+        "ext-redis": "*",
+        "composer/installers": "^2.0"
+    },
+    "extra": {
+        "installer-name": "FrauxSearch"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5 || ^12.0",
+        "mediawiki/mediawiki-phan-config": "0.20.0",
+        "mediawiki/mediawiki-codesniffer": "52.0.1",
+        "php-parallel-lint/php-parallel-lint": "1.4.0",
+        "seld/jsonlint": "^1.11"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "parallel-lint src maintenance tests .phan .ci",
+        "cs": "phpcs -sp",
+        "phan": "@php -d memory_limit=4G vendor/bin/phan --allow-polyfill-parser --no-progress-bar",
+        "schema": "@php .ci/validate-extension.php",
+        "check": [
+            "@composer validate --strict",
+            "@lint",
+            "@cs",
+            "@test --fail-on-warning --fail-on-risky --fail-on-skipped"
+        ],
+        "check:mediawiki": [
+            "@schema",
+            "@phan"
+        ],
+        "test:integration": "bash tests/integration/run.sh",
+        "test:ranking": "bash tests/integration/ranking.sh"
+    }
+}

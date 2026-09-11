@@ -1,0 +1,157 @@
+{
+    "captured_at": "2026-08-04T21:35:00Z",
+    "production_base_url": "https://gbf.wiki/api.php",
+    "limit": 10,
+    "cases": [
+        {
+            "id": "completion-n",
+            "type": "completion",
+            "query": "n",
+            "namespace": 0,
+            "production": [
+                "Nier",
+                "Niyon",
+                "Narmaya",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Narmaya (Grand)",
+                "Narmaya (Valentine)",
+                "Narmaya (Yukata)",
+                "Nier (Yukata)",
+                "Nezahualpilli"
+            ],
+            "frauxsearch_baseline": [
+                "Nier",
+                "Niyon",
+                "Narmaya (Grand)",
+                "Narmaya (Valentine)",
+                "Nehan",
+                "Narmaya (Yukata)",
+                "Narmaya (Holiday)",
+                "Nezha (Yukata)",
+                "Noa (Grand)",
+                "Naoise"
+            ]
+        },
+        {
+            "id": "completion-naru",
+            "type": "completion",
+            "query": "naru",
+            "namespace": 0,
+            "production": [
+                "Naru",
+                "Naru (Valentine)",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Narmaya (Grand)",
+                "Narmaya (Yukata)",
+                "Narophirmidas",
+                "Narita",
+                "Narmaya (Rising)",
+                "Narmaya (Versus)"
+            ],
+            "frauxsearch_baseline": [
+                "Narmaya",
+                "Narmaya (Valentine)",
+                "Narmaya (Grand)",
+                "Narmaya (Holiday)",
+                "Narmaya (Yukata)",
+                "Narmaya (Summer)",
+                "Narophirmidas",
+                "Narita",
+                "Narmaya (Versus)",
+                "Narmaya (Rising)"
+            ]
+        },
+        {
+            "id": "completion-narmaya",
+            "type": "completion",
+            "query": "narmaya",
+            "namespace": 0,
+            "production": [
+                "Narmaya",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Narmaya (Grand)",
+                "Narmaya (Valentine)",
+                "Narmaya (Yukata)",
+                "Narmaya (Rising)",
+                "Narmaya (Versus)",
+                "Narmaya/Lore",
+                "Narmaya (Summer)/Lore"
+            ],
+            "frauxsearch_baseline": [
+                "Narmaya",
+                "Narmaya (Grand)",
+                "Narmaya (Valentine)",
+                "Narmaya (Yukata)",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Narmaya (Versus)",
+                "Narmaya (Rising)",
+                "Narmaya/Lore",
+                "Narmaya (Summer)/Lore"
+            ]
+        },
+        {
+            "id": "fulltext-narmaya",
+            "type": "fulltext",
+            "query": "narmaya",
+            "namespace": 0,
+            "production": [
+                "Narmaya",
+                "Narmaya (Valentine)",
+                "Narmaya (Grand)",
+                "Narmaya (Yukata)",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Multiattack Rate",
+                "Evanescence",
+                "Narmaya (Versus)",
+                "Narmaya (Rising)"
+            ],
+            "frauxsearch_baseline": [
+                "Narmaya",
+                "Narmaya (Grand)",
+                "Narmaya (Valentine)",
+                "Narmaya (Yukata)",
+                "Narmaya (Holiday)",
+                "Narmaya (Summer)",
+                "Narmaya (Versus)",
+                "Narmaya (Rising)",
+                "Narmaya/Lore",
+                "Narmaya (Summer)/Lore"
+            ]
+        },
+        {
+            "id": "fulltext-naru",
+            "type": "fulltext",
+            "query": "naru",
+            "namespace": 0,
+            "production": [
+                "Narmaya",
+                "Narmaya (Valentine)",
+                "Narmaya (Grand)",
+                "Narmaya (Holiday)",
+                "Lucilius (Raid)/Grids",
+                "Advanced Grids/Zephyrus/FaaHL",
+                "Advanced Grids/Tiamat/SUBHL",
+                "Advanced Grids/Zephyrus/SUBHL",
+                "Advanced Grids/Titan",
+                "Unite and Fight/September 2023/Omega Grids"
+            ],
+            "frauxsearch_baseline": [
+                "Narmaya",
+                "Narmaya (Valentine)",
+                "Narmaya (Grand)",
+                "Narmaya (Holiday)",
+                "Narmaya/Lore",
+                "Over The Sky ~GRANBLUE FANTASY~",
+                "Narmaya (Grand)/Strategy",
+                "Advanced Grids/Titan/EX+",
+                "Ultimate Bahamut (Raid)/Grids",
+                "Advanced Grids/Titan"
+            ]
+        }
+    ]
+}

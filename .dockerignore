@@ -1,0 +1,11 @@
+/.git
+/.phpunit.cache
+/vendor
+/.local-notes
+/ops
+/*.md
+/tests/integration/redisQueue.php
+/tests/integration/redisQueueConf.php
+/tests/integration/RedisQueueProbeJob.php
+**/__pycache__
+**/*.pyc
